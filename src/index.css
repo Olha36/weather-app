@@ -20,11 +20,6 @@ body {
   font-family: "Montserrat Alternates";
 }
 
-*/ h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 a {
   color: #000000;
   text-decoration: none;
@@ -32,6 +27,15 @@ a {
   line-height: 15px;
 }
 
+button {
+  padding: 10px 20px;
+  background: #ffb36c;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
