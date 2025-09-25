@@ -20,6 +20,8 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
   position: "absolute",
+  right: 0,
+  top: 0,
   pointerEvents: "none",
   display: "flex",
   alignItems: "center",
@@ -30,8 +32,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   width: "100%",
   "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    padding: theme.spacing(1),
+    paddingRight: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
   },
@@ -108,13 +110,14 @@ export default function WeatherSearch() {
 
       <div>
         <Search>
+          <StyledInputBase
+            placeholder="Search location…"
+            inputProps={{ "aria-label": "search" }}
+          />
+
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ "aria-label": "search" }}
-          />
         </Search>
       </div>
     </div>
