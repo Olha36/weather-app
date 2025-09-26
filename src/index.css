@@ -42,3 +42,245 @@ button {
     background-color: #ffffff;
   }
 }
+
+
+
+
+
+/* Rectangle 5 */
+
+/* position: absolute;
+width: 320px;
+height: 430px;
+left: 150px;
+top: 735px;
+
+background: #E8E8E8;
+border-radius: 20px; */
+
+
+/* Prague */
+
+/* position: absolute;
+width: 52px;
+height: 17px;
+left: 180px;
+top: 750px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+
+color: #000000; */
+
+
+
+/* Czech Republic */
+
+/* position: absolute;
+width: 110px;
+height: 17px;
+left: 330px;
+top: 750px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+text-align: right;
+
+color: #000000; */
+
+
+
+/* 14:00 */
+
+/* position: absolute;
+width: 63px;
+height: 29px;
+left: 279px;
+top: 782px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000; */
+
+
+
+
+
+/* Friday */
+
+/* position: absolute;
+width: 44px;
+height: 17px;
+left: 323px;
+top: 864px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+
+color: #000000; */
+
+
+
+/* 13.10.2023 */
+
+/* position: absolute;
+width: 68px;
+height: 17px;
+left: 229px;
+top: 864px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+text-align: right;
+
+color: #000000; */
+
+
+
+/* Line 2 */
+
+/* position: absolute;
+width: 17px;
+height: 0px;
+left: 310px;
+top: 864px;
+
+border: 1px solid #000000;
+transform: rotate(90deg); */
+
+
+/* image 4 */
+
+/* position: absolute;
+width: 120px;
+height: 120px;
+left: 250px;
+top: 903px;
+
+background: url(image.png); */
+
+
+/* 22℃ */
+
+/* position: absolute;
+width: 69px;
+height: 39px;
+left: 276px;
+top: 1038px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 39px;
+/* identical to box height */
+
+
+
+
+/* refresh 1 */
+
+/* position: absolute;
+width: 30px;
+height: 30px;
+left: 170px;
+top: 1115px;
+
+background: url(refresh.png); */
+
+
+/* heart (1) 1 */
+
+/* position: absolute;
+width: 30px;
+height: 30px;
+left: 216px;
+top: 1115px;
+
+background: url(heart (1).png); */
+
+
+/* delete 1 */
+
+/* position: absolute;
+width: 30px;
+height: 30px;
+left: 420px;
+top: 1115px;
+
+background: url(delete.png); */
+
+
+/* Frame 3 */
+
+/* Auto layout */
+/* display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 25px;
+gap: 10px;
+
+position: absolute;
+width: 99px;
+height: 28px;
+left: 284px;
+top: 1116px;
+
+background: #FFB36C;
+border-radius: 10px; */
+
+
+/* See more */
+
+/* width: 49px;
+height: 12px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+text-align: right;
+
+color: #000000;
+
+
+flex: none;
+order: 0;
+flex-grow: 0; */
+
+
+
+/* display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 18px;
+gap: 10px;
+
+position: absolute;
+width: 114px;
+height: 28px;
+left: 253px;
+top: 821px;
+
+background: #FFB36C;
+border-radius: 10px; */
+

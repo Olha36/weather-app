@@ -35,10 +35,11 @@ export const useWeather = (cityName) => {
             time: date.toLocaleTimeString("en-US", {
               hour: "2-digit",
               minute: "2-digit",
+              hour12: false,
             }),
-            temp: item.main.temp,
-            temp_min: item.main.temp_min,
-            temp_max: item.main.temp_max,
+            temp: Math.round(item.main.temp),
+            temp_min: Math.round(item.main.temp_min),
+            temp_max: Math.round(item.main.temp_max),
             weather: item.weather[0],
           };
         });
