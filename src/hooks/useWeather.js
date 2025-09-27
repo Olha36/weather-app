@@ -6,8 +6,6 @@ export const useWeather = (cityName) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  console.log(data);
-
   useEffect(() => {
     if (!cityName) return;
 
@@ -54,6 +52,7 @@ export const useWeather = (cityName) => {
 
     fetchData();
   }, [cityName]);
+  
 
-  return { data, loading, error };
+  return { data, setData, loading, error };
 };
