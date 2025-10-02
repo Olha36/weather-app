@@ -94,7 +94,9 @@ export default function WeatherCard() {
     setExpandedCards((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
-  const handleDelete = () => console.log("delete");
+  const handleDelete = async (index) => {
+    setData((prev) => prev.filter((_, i) => i !== index));
+  };
 
   return (
     <CardContainer>
@@ -156,9 +158,8 @@ export default function WeatherCard() {
               </>
             )}
 
-            {/* Collapse section */}
             <Collapse in={expanded}>
-              <Box sx={{ mt: 2, p: 2,  borderRadius: 2 }}>
+              <Box sx={{ mt: 2, p: 2, borderRadius: 2 }}>
                 <Typography>Min temperature: {day.temp_min}°C</Typography>
                 <Typography>Feels like: {day.feels_like}°C</Typography>
                 <Typography>Humidity: {day.humidity}</Typography>
@@ -193,7 +194,7 @@ export default function WeatherCard() {
               </Button>
               <DeleteOutlineOutlinedIcon
                 style={{ cursor: "pointer" }}
-                onClick={handleDelete}
+                onClick={() => handleDelete(index)}
               />
             </CardActions>
           </CardItem>
