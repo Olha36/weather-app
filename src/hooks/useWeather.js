@@ -37,7 +37,11 @@ export const useWeather = (cityName) => {
             }),
             temp: Math.round(item.main.temp),
             temp_min: Math.round(item.main.temp_min),
+            feels_like: Math.round(item.main.feels_like),
+            humidity: item.main.humidity,
             temp_max: Math.round(item.main.temp_max),
+            speed: item.wind.speed, 
+            gust: item.wind.gust,
             weather: item.weather[0],
           };
         });

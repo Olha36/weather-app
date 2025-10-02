@@ -17,7 +17,6 @@ export const getHourlyForecast = async (city) => {
 };
 
 export const getWeeklyForecast = async () => {
-  // weekly дає OneCall API
   const res = await fetch(
     `https://api.openweathermap.org/data/2.5/onecall?appid=${API_KEY}&units=metric`
   );
