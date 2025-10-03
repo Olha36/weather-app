@@ -17,6 +17,7 @@ const Image = styled("img")(() => ({
   marginTop: "23px",
 }));
 export default function WeatherDetails({ expanded, day }) {
+  if (!day) return null;
   return (
     <Collapse in={expanded}>
       <Box

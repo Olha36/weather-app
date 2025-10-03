@@ -42,7 +42,7 @@ export default function WeatherCard() {
   const { data, setData, loading, error } = useWeather("Kyiv");
   const [loadingCard, setLoadingCard] = useState({});
   const [isFav, setIsFav] = useState({});
-  const [expandedCards, setExpandedCards] = useState({});
+  const [expandedIndex, setExpandedIndex] = useState(null);
   const [page, setPage] = useState(1);
   const cardPerPage = 3;
 
@@ -99,18 +99,24 @@ export default function WeatherCard() {
   };
 
   const handleToggleExpand = (index) => {
-    setExpandedCards((prev) => ({ ...prev, [index]: !prev[index] }));
+    setExpandedIndex((prev) => (prev === index ? null : index));
   };
 
   const handleDelete = async (index) => {
     setData((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const handlePageChange = (_, value) => {
+    setPage(value);
+    setExpandedIndex(null);
+  };
+
+
   return (
     <div>
       <CardContainer>
         {currentCards.map((day, index) => {
-          const expanded = !!expandedCards[index];
+          const expanded = expandedIndex === index;
 
           return (
             <div key={index}>
@@ -216,17 +222,16 @@ export default function WeatherCard() {
       </CardContainer>
 
       <CardContainer>
-        {currentCards.map((day, index) => {
-          const expanded = !!expandedCards[index];
-          return <WeatherDetails key={index} expanded={expanded} day={day} />;
-        })}
+        {expandedIndex !== null && (
+          <WeatherDetails expanded={true} day={currentCards[expandedIndex]} />
+        )}
       </CardContainer>
 
       <Pagination
         count={pageTotal}
         page={page}
         style={{ display: "grid", justifyContent: "center" }}
-        onChange={(value) => setPage(value)}
+        onChange={handlePageChange}
       />
     </div>
   );

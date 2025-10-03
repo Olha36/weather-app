@@ -12,6 +12,7 @@ export default function Header() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          padding: '33px'
         }}
       >
         <Link to="/">
