@@ -11,7 +11,7 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getHourlyForecast } from "../api/weatherApi";
 import Pagination from "@mui/material/Pagination";
 import WeatherDetails from "./WeatherDetails";
@@ -38,7 +38,7 @@ const CardActions = styled("div")(() => ({
   marginTop: "10px",
 }));
 
-export default function WeatherCard() {
+export default function WeatherCard({ onCardChange }) {
   const { data, setData, loading, error } = useWeather("Kyiv");
   const [loadingCard, setLoadingCard] = useState({});
   const [isFav, setIsFav] = useState({});
@@ -50,6 +50,12 @@ export default function WeatherCard() {
   const endIndex = page * cardPerPage;
   const currentCards = data.slice(startIndex, endIndex);
   const pageTotal = Math.ceil(data.length / cardPerPage);
+
+  useEffect(() => {
+    if (data.length && onCardChange) {
+      onCardChange(data);
+    }
+  }, [data, onCardChange]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -109,8 +115,10 @@ export default function WeatherCard() {
   const handlePageChange = (_, value) => {
     setPage(value);
     setExpandedIndex(null);
+    const startIndex = (value - 1) * cardPerPage;
+    const newCard = data[startIndex];
+    if (onCardChange) onCardChange(newCard);
   };
-
 
   return (
     <div>
