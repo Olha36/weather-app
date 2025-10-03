@@ -3,7 +3,6 @@ import {
   Typography,
   CircularProgress,
   Box,
-  Collapse,
   Button,
 } from "@mui/material";
 import { useWeather } from "../hooks/useWeather";
@@ -14,6 +13,8 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
 import { getHourlyForecast } from "../api/weatherApi";
+import Pagination from "@mui/material/Pagination";
+import WeatherDetails from "./WeatherDetails";
 
 const CardItem = styled("div")(() => ({
   width: "320px",
@@ -42,6 +43,13 @@ export default function WeatherCard() {
   const [loadingCard, setLoadingCard] = useState({});
   const [isFav, setIsFav] = useState({});
   const [expandedCards, setExpandedCards] = useState({});
+  const [page, setPage] = useState(1);
+  const cardPerPage = 3;
+
+  const startIndex = (page - 1) * cardPerPage;
+  const endIndex = page * cardPerPage;
+  const currentCards = data.slice(startIndex, endIndex);
+  const pageTotal = Math.ceil(data.length / cardPerPage);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -99,107 +107,127 @@ export default function WeatherCard() {
   };
 
   return (
-    <CardContainer>
-      {data.map((day, index) => {
-        const expanded = !!expandedCards[index];
+    <div>
+      <CardContainer>
+        {currentCards.map((day, index) => {
+          const expanded = !!expandedCards[index];
 
-        return (
-          <CardItem key={index}>
-            <Box
-              sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
-            >
-              <Typography variant="body2">{day.city}</Typography>
-              <Typography variant="body2">{day.country}</Typography>
-            </Box>
+          return (
+            <div key={index}>
+              <CardItem>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    mb: 1,
+                  }}
+                >
+                  <Typography variant="body2">{day.city}</Typography>
+                  <Typography variant="body2">{day.country}</Typography>
+                </Box>
 
-            <Typography variant="body1">{day.time}</Typography>
+                <Typography variant="body1">{day.time}</Typography>
 
-            <Box
-              sx={{ display: "flex", justifyContent: "space-around", my: 1 }}
-            >
-              <Button
-                size="small"
-                variant="contained"
-                sx={{ bgcolor: "#FFB36C", fontSize: "10px" }}
-              >
-                Hourly forecast
-              </Button>
-              <Button
-                size="medium"
-                variant="contained"
-                sx={{ bgcolor: "#FFB36C", fontSize: "10px" }}
-              >
-                Weekly forecast
-              </Button>
-            </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                    my: 1,
+                  }}
+                >
+                  <Button
+                    size="small"
+                    variant="contained"
+                    sx={{ bgcolor: "#FFB36C", fontSize: "10px" }}
+                  >
+                    Hourly forecast
+                  </Button>
+                  <Button
+                    size="medium"
+                    variant="contained"
+                    sx={{ bgcolor: "#FFB36C", fontSize: "10px" }}
+                  >
+                    Weekly forecast
+                  </Button>
+                </Box>
 
-            <Box
-              sx={{ display: "flex", justifyContent: "space-evenly", mb: 1 }}
-            >
-              <Typography variant="caption">{day.date}</Typography>
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ backgroundColor: "#000000" }}
-              />
-              <Typography variant="caption">{day.weekday}</Typography>
-            </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-evenly",
+                    mb: 1,
+                  }}
+                >
+                  <Typography variant="caption">{day.date}</Typography>
+                  <Divider
+                    orientation="vertical"
+                    flexItem
+                    sx={{ backgroundColor: "#000000" }}
+                  />
+                  <Typography variant="caption">{day.weekday}</Typography>
+                </Box>
 
-            {loadingCard[index] ? (
-              <CircularProgress sx={{ my: 3 }} />
-            ) : (
-              <>
-                <img
-                  src={`https://openweathermap.org/img/wn/${day.weather.icon}@2x.png`}
-                  alt={day.weather.description}
-                  style={{ margin: "22px 0 15px" }}
-                />
-                <Typography variant="h2">{day.temp}°C</Typography>
-              </>
-            )}
+                {loadingCard[index] ? (
+                  <CircularProgress sx={{ my: 3 }} />
+                ) : (
+                  <>
+                    <img
+                      src={`https://openweathermap.org/img/wn/${day.weather.icon}@2x.png`}
+                      alt={day.weather.description}
+                      style={{ margin: "22px 0 15px" }}
+                    />
+                    <Typography variant="h2">{day.temp}°C</Typography>
+                  </>
+                )}
 
-            <Collapse in={expanded}>
-              <Box sx={{ mt: 2, p: 2, borderRadius: 2 }}>
-                <Typography>Min temperature: {day.temp_min}°C</Typography>
-                <Typography>Feels like: {day.feels_like}°C</Typography>
-                <Typography>Humidity: {day.humidity}</Typography>
-                <Typography>Wind speed: {day.speed}</Typography>
-                <Typography>Wind gust: {day.gust}</Typography>
-              </Box>
-            </Collapse>
+                <CardActions>
+                  <RefreshIcon
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleRefresh(index, day.city)}
+                  />
+                  {isFav[index] ? (
+                    <FavoriteIcon
+                      style={{ cursor: "pointer", color: "red" }}
+                      onClick={() => handleFavourite(index)}
+                    />
+                  ) : (
+                    <FavoriteBorderOutlinedIcon
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleFavourite(index)}
+                    />
+                  )}
+                  <Button
+                    size="medium"
+                    variant="contained"
+                    sx={{ bgcolor: "#FFB36C", fontSize: "10px" }}
+                    onClick={() => handleToggleExpand(index)}
+                  >
+                    {expanded ? "see less" : "see more"}
+                  </Button>
+                  <DeleteOutlineOutlinedIcon
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleDelete(index)}
+                  />
+                </CardActions>
+              </CardItem>
+            </div>
+          );
+        })}
+      </CardContainer>
 
-            <CardActions>
-              <RefreshIcon
-                style={{ cursor: "pointer" }}
-                onClick={() => handleRefresh(index, day.city)}
-              />
-              {isFav[index] ? (
-                <FavoriteIcon
-                  style={{ cursor: "pointer", color: "red" }}
-                  onClick={() => handleFavourite(index)}
-                />
-              ) : (
-                <FavoriteBorderOutlinedIcon
-                  style={{ cursor: "pointer" }}
-                  onClick={() => handleFavourite(index)}
-                />
-              )}
-              <Button
-                size="medium"
-                variant="contained"
-                sx={{ bgcolor: "#FFB36C", fontSize: "10px" }}
-                onClick={() => handleToggleExpand(index)}
-              >
-                {expanded ? "see less" : "see more"}
-              </Button>
-              <DeleteOutlineOutlinedIcon
-                style={{ cursor: "pointer" }}
-                onClick={() => handleDelete(index)}
-              />
-            </CardActions>
-          </CardItem>
-        );
-      })}
-    </CardContainer>
+      <CardContainer>
+        {currentCards.map((day, index) => {
+          const expanded = !!expandedCards[index];
+          return <WeatherDetails key={index} expanded={expanded} day={day} />;
+        })}
+      </CardContainer>
+
+      <Pagination
+        count={pageTotal}
+        page={page}
+        style={{ display: "grid", justifyContent: "center" }}
+        onChange={(value) => setPage(value)}
+      />
+    </div>
   );
 }
