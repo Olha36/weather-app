@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { useWeekWeather } from "../hooks/useWeekWeather";
 
 export default function WeekForecast() {
-  const { data } = useWeekWeather("Kyiv")
+  const { data } = useWeekWeather("Kyiv");
   return (
     <>
       <Typography variant="subtitle2">6-day forecast</Typography>
@@ -25,7 +25,7 @@ export default function WeekForecast() {
               sx={{
                 width: "100%",
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr 1fr",
+                gridTemplateColumns: "1fr  1fr 1fr",
                 alignItems: "center",
                 backgroundColor: "#D9D9D9",
                 borderRadius: "12px",
@@ -38,14 +38,31 @@ export default function WeekForecast() {
               <Typography variant="caption">
                 {day.weekday}, {day.date}
               </Typography>
-              <img
+              {/* <img
                 src={`https://openweathermap.org/img/wn/${day.weather.icon}@2x.png`}
                 alt={day.weather.description}
                 style={{ margin: "22px 0 15px" }}
               />
               <Typography>
                 {day.temp_min}/{day.temp_max}°C
-              </Typography>
+              </Typography> */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                }}
+              >
+                <img
+                  src={`https://openweathermap.org/img/wn/${day.weather.icon}@2x.png`}
+                  alt={day.weather.description}
+                  style={{ margin: "22px 0 15px" }}
+                />
+                <Typography>
+                  {day.temp_min}/{day.temp_max}°C
+                </Typography>
+              </Box>
+
               <Typography>{day.weather.description}</Typography>
             </Box>
           );
