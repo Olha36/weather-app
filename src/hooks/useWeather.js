@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getHourlyForecast } from "../api/weatherApi";
-import { Visibility } from "@mui/icons-material";
+
 
 export const useWeather = (cityName) => {
   const [data, setData] = useState([]);
@@ -44,7 +44,11 @@ export const useWeather = (cityName) => {
             temp_max: Math.round(item.main.temp_max),
             speed: item.wind.speed,
             visibility: item.visibility,
-            weather: item.weather[0],
+            weather: {
+              main: item.weather[0].main,
+              description: item.weather[0].description,
+              icon: item.weather[0].icon,
+            },
           };
         });
 

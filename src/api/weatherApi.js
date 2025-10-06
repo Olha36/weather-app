@@ -16,9 +16,9 @@ export const getHourlyForecast = async (city) => {
   return res.json();
 };
 
-export const getWeeklyForecast = async () => {
+export const getWeeklyForecast = async (city) => {
   const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?appid=${API_KEY}&units=metric`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
   );
   if (!res.ok) throw new Error("Не вдалося завантажити тижневий прогноз");
   return res.json();
