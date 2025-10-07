@@ -1,10 +1,11 @@
 import { CircularProgress, Typography } from "@mui/material";
 import { useNews } from "../hooks/useNews";
 import { Box } from "@mui/material";
-import { Padding } from "@mui/icons-material";
+import { useState } from "react";
 
 export default function News() {
   const { data, loading, error } = useNews();
+  const [visible, setVisible] = useState(4);
 
   if (loading) return <CircularProgress />;
   if (error) return <Typography color="error">{error}</Typography>;
@@ -23,7 +24,7 @@ export default function News() {
           padding: "6px",
         }}
       >
-        {data.map((item, index) => (
+        {data.slice(0, visible).map((item, index) => (
           <Box
             key={index}
             sx={{
@@ -60,6 +61,14 @@ export default function News() {
           </Box>
         ))}
       </Box>
+      {visible < data.length && (
+        <button
+          style={{ border: "none", margin: "40px 0" }}
+          onClick={() => setVisible((prev) => prev + 4)}
+        >
+          See more
+        </button>
+      )}
     </>
   );
 }

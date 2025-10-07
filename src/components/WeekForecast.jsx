@@ -4,7 +4,7 @@ import { useWeekWeather } from "../hooks/useWeekWeather";
 export default function WeekForecast() {
   const { data } = useWeekWeather("Kyiv");
   return (
-    <>
+    <Box style={{margin: '40px 0'}}>
       <Typography variant="subtitle2">6-day forecast</Typography>
       <Box
         sx={{
@@ -68,6 +68,6 @@ export default function WeekForecast() {
           );
         })}
       </Box>
-    </>
+    </Box>
   );
 }
