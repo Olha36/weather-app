@@ -6,6 +6,7 @@ import WeatherChart from "./WeatherChart";
 import { useState } from "react";
 import WeekForecast from "./WeekForecast";
 import News from "./News";
+import Nature from "./Nature";
 
 const theme = createTheme({
   typography,
@@ -23,6 +24,7 @@ export default function Home() {
         {selectedCityData && <WeatherChart hourlyData={selectedCityData} />}
         <WeekForecast />
         <News />
+        <Nature />
       </ThemeProvider>
     </>
   );
