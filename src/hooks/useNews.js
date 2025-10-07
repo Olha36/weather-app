@@ -13,7 +13,7 @@ export const useNews = () => {
         const result = await getNews();
         const newsData = result.articles.map((item) => ({
           image: item.urlToImage,
-          content: item.content,
+          title: item.title,
         }));
 
         setData(newsData);
