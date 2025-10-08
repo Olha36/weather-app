@@ -16,6 +16,12 @@ export const typography = {
     [breakpoints.down("md")]: { fontSize: 24 },
     [breakpoints.down("sm")]: { fontSize: 16 },
   },
+  h3: {
+    fontSize: 28,
+    fontWeight: 500,
+    [breakpoints.down("md")]: { fontSize: 28 },
+    [breakpoints.down("sm")]: { fontSize: 16 },
+  },
 
   subtitle1: {
     fontSize: 20,
@@ -43,3 +49,12 @@ export const typography = {
     [breakpoints.down("sm")]: { fontSize: 10 },
   },
 };
+
+
+
+// const CardItem = styled("div")(() => ({
+//   width: "320px",
+//   borderRadius: "20px",
+//   backgroundColor: "#E4E4E4",
+//   padding: "15px",
+// }));

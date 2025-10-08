@@ -2,8 +2,8 @@
 import Box from "@mui/material/Box";
 // import Modal from "@mui/material/Modal";
 // import Fade from "@mui/material/Fade";
+import { Collapse } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { Collapse, Card, CardContent } from "@mui/material";
 import { useState } from "react";
 
 const style = {

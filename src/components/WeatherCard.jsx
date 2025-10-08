@@ -1,19 +1,19 @@
-import {
-  Divider,
-  Typography,
-  CircularProgress,
-  Box,
-  Button,
-} from "@mui/material";
-import { useWeather } from "../hooks/useWeather";
-import { styled } from "@mui/material/styles";
-import RefreshIcon from "@mui/icons-material/Refresh";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useState, useEffect } from "react";
-import { getHourlyForecast } from "../api/weatherApi";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Divider,
+  Typography,
+} from "@mui/material";
 import Pagination from "@mui/material/Pagination";
+import { styled } from "@mui/material/styles";
+import { useEffect, useState } from "react";
+import { getHourlyForecast } from "../api/weatherApi";
+import { useWeather } from "../hooks/useWeather";
 import WeatherDetails from "./WeatherDetails";
 
 const CardItem = styled("div")(() => ({

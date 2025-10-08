@@ -1,12 +1,12 @@
-import WeatherCard from "./WeatherCard";
-import WeatherSearch from "./WeatherSearch";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { typography } from "../typography";
-import WeatherChart from "./WeatherChart";
 import { useState } from "react";
-import WeekForecast from "./WeekForecast";
-import News from "./News";
+import { typography } from "../typography";
 import Nature from "./Nature";
+import News from "./News";
+import WeatherCard from "./WeatherCard";
+import WeatherChart from "./WeatherChart";
+import WeatherSearch from "./WeatherSearch";
+import WeekForecast from "./WeekForecast";
 
 const theme = createTheme({
   typography,

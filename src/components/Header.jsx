@@ -1,7 +1,7 @@
-import logo from "../assets/logo.png";
-import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
+import { Button } from "./ui/Button/Button";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export default function Header() {
   return (
@@ -12,7 +12,7 @@ export default function Header() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: '33px'
+          padding: "33px",
         }}
       >
         <Link to="/">
