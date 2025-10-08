@@ -1,7 +1,7 @@
 import Avatar from "@mui/material/Avatar";
-import { Button } from "./ui/Button/Button";
+import { Button } from "../ui/Button/Button";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 export default function Header() {
   return (

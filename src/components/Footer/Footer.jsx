@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import footerLogo from "../assets/logo.png";
-import facebook from "../assets/socials/facebook.svg";
-import instagram from "../assets/socials/instagram.svg";
-import whatsapp from "../assets/socials/whatsapp.svg";
+import footerLogo from "../../assets/logo.png";
+import facebook from "../../assets/socials/facebook.svg";
+import instagram from "../../assets/socials/instagram.svg";
+import whatsapp from "../../assets/socials/whatsapp.svg";
 import { styled } from "@mui/material/styles";
 import {Link} from "@mui/material";
 

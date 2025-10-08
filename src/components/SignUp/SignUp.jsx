@@ -3,9 +3,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Button } from "./ui/Button/Button";
-import { LabeledTextfield } from "./ui/LabeledTextfield/LabeledTextfield.jsx";
-import { AuthContainer } from "./AuthContainer/AuthContainer";
+import { Button } from "../ui/Button/Button.jsx";
+import { LabeledTextfield } from "../ui/LabeledTextfield/LabeledTextfield.jsx";
+import { AuthContainer } from "../AuthContainer/AuthContainer.jsx";
 import { Link } from "@mui/material";
 
 const signUpSchema = Yup.object().shape({

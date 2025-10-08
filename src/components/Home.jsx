@@ -1,12 +1,12 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { typography } from "../typography";
-import Nature from "./Nature";
-import News from "./News";
-import WeatherCard from "./WeatherCard";
-import WeatherChart from "./WeatherChart";
-import WeatherSearch from "./WeatherSearch";
-import WeekForecast from "./WeekForecast";
+import Nature from "./Nature/Nature";
+import News from "./News/News";
+import WeatherCard from "./WeatherCard/WeatherCard";
+import WeatherChart from "./WeatherChart/WeatherChart";
+import WeatherSearch from "./WeatherSearch/WeatherSearch";
+import WeekForecast from "./WeekForecast/WeekForecast";
 
 const theme = createTheme({
   typography,

@@ -1,7 +1,7 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
-import { useNature } from "../hooks/useNature";
+import { useNature } from "../../hooks/useNature";
 
 export default function Nature() {
   const { data, loading, error } = useNature();
@@ -41,7 +41,6 @@ export default function Nature() {
         overflow: "hidden",
         position: "relative",
         backgroundColor: "#f5f5f5",
-   
       }}
     >
       <Typography variant="h6" sx={{ mb: 3 }}>

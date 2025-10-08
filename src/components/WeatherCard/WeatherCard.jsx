@@ -12,9 +12,9 @@ import {
 import Pagination from "@mui/material/Pagination";
 import { styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
-import { getHourlyForecast } from "../api/weatherApi";
-import { useWeather } from "../hooks/useWeather";
-import WeatherDetails from "./WeatherDetails";
+import { getHourlyForecast } from "../../api/weatherApi";
+import { useWeather } from "../../hooks/useWeather";
+import WeatherDetails from "../WeatherDetails/WeatherDetails";
 
 const CardItem = styled("div")(() => ({
   width: "320px",

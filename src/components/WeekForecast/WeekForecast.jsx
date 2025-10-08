@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { useWeekWeather } from "../hooks/useWeekWeather";
+import { useWeekWeather } from "../../hooks/useWeekWeather";
 
 export default function WeekForecast() {
   const { data } = useWeekWeather("Kyiv");

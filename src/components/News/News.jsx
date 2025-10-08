@@ -1,6 +1,6 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
 import { useState } from "react";
-import { useNews } from "../hooks/useNews";
+import { useNews } from "../../hooks/useNews";
 
 export default function News() {
   const { data, loading, error } = useNews();
