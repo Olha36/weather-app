@@ -8,7 +8,7 @@ import { LabeledTextfield } from "../ui/LabeledTextfield/LabeledTextfield.jsx";
 import { AuthContainer } from "../AuthContainer/AuthContainer.jsx";
 import { Link } from "@mui/material";
 
-const signUpSchema = Yup.object().shape({
+const SignInSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Name must be at least 2 characters long")
     .required("Name is required"),
@@ -21,13 +21,13 @@ const signUpSchema = Yup.object().shape({
     .required("Please confirm your password"),
 });
 
-export default function SignUp() {
+export default function SignIn() {
   const navigate = useNavigate();
 
   const handleRegister = async (values, { setSubmitting }) => {
     try {
       console.log("Registering user:", values);
-      navigate("/signin");
+      navigate("/");
     } catch (error) {
       console.error("Registration failed:", error);
     } finally {
@@ -42,25 +42,26 @@ export default function SignUp() {
       password: "",
       confirmPassword: "",
     },
-    validationSchema: signUpSchema,
+    validationSchema: SignInSchema,
     onSubmit: handleRegister,
   });
 
   return (
     <>
       <AuthContainer
-        title="Sign up"
+        title="Log in"
         footer={
           <Box display="flex" alignItems="center" gap={1}>
             <Typography variant="subtitle2" color="textSecondary">
-              Already have an account?
+              Do not have an account?
             </Typography>
-            <Link href="/signin" active='true'>
-              Sign in
+            <Link href="/" active="true">
+              Sign up
             </Link>
           </Box>
         }
       >
+        <Typography>Cjeck</Typography>
         <Box
           component="form"
           noValidate
@@ -99,25 +100,13 @@ export default function SignUp() {
             errorMessage={formik.touched.password && formik.errors.password}
           />
 
-          <LabeledTextfield
-            id="confirmPassword"
-            label="Confirm password"
-            required
-            type="password"
-            placeholder="Re-enter your password"
-            {...formik.getFieldProps("confirmPassword")}
-            errorMessage={
-              formik.touched.confirmPassword && formik.errors.confirmPassword
-            }
-          />
-
           <Button
             type="submit"
             size="large"
             sx={{ width: "100%" }}
             loading={formik.isSubmitting}
           >
-            Sign up
+           Log in
           </Button>
         </Box>
       </AuthContainer>
